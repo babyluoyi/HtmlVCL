@@ -391,6 +391,7 @@ function Control(ParentControl,htmlType,htmlClass)
                 var cssValue = htmlElement.getAttribute("style");
                 htmlElement.setAttribute("style", cssValue+this.css);
                 
+                
                 this.setControlPos();
             },
             /*事件*/
@@ -1283,3 +1284,44 @@ function HtmlTable(parentElement) {
     };
     return _this;
 };
+
+function HtmlDialog(parentElement) {
+    var _this = new Control(parentElement, "div", "HtmlDialog");
+    parentElement.controls.push(_this);
+    parentElement.controlCount = parentElement.controls.length;
+    _this.width = 450;
+    _this.height = 300;
+    _this.visible = false;
+    _this.align = "center";
+    _this.contentPanel = null;
+    _this.create();
+    _this.close = function(){
+        _this.setVisible(false);
+    }
+    _this.show = function(){
+        _this.setVisible(true);
+    }
+    _this.Refresh = function () {
+        var dialogWidth = _this.width;
+        var dialogHeight = _this.height;
+        var dialogForm = new HtmlPanel(_this);
+        dialogForm.width = dialogWidth;
+        dialogForm.height = dialogHeight;
+        dialogForm.top = (parentElement.height - dialogHeight) / 2;
+        dialogForm.left = (parentElement.width - dialogWidth) / 2;
+        dialogForm.setCss("border:1px solid #eee;")
+        var titleBar = new HtmlPanel(dialogForm);
+        titleBar.align = "top";
+        titleBar.height = "30";
+        titleBar.Refresh();
+        titleBar.setColor("#eee");
+        _this.contentPanel = new HtmlPanel(dialogForm);
+        _this.contentPanel.align = "center";
+        _this.contentPanel.Refresh();
+        _this.contentPanel.setColor("#fff");
+        _this.update();
+        _this.setVisible(_this.visible);
+        _this.setColor("rgba(10, 10, 10, 0.4)");
+    }
+    return _this;
+}
