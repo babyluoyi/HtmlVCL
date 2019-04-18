@@ -1,0 +1,20 @@
+
+::-webkit-scrollbar {
+    display:none
+}    
+.HtmlNavBar-title{
+    padding-top: 10px;
+}
+.HtmlNavBar-item{
+    padding-left: 30px;
+    padding-top: 5px;
+}
+
+.HtmlTable th {
+    border:1px solid #cac3c3;
+
+}
+.HtmlTable tr {
+    border:1px solid #cac3c3;
+    height:25px;
+}

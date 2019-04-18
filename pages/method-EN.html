@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+	function main() {
+		var form = new HtmlForm(null);
+		form.align = "center";
+		form.color = "#eee";
+		form.Refresh();
+
+		var topPanel = new HtmlPanel(form);
+		topPanel.alignment = "center";
+		topPanel.width = 200;
+		topPanel.height = 100;
+		topPanel.left = 10;
+		topPanel.top = 10;
+		topPanel.color = "green";
+		topPanel.fontSize = 14;
+		topPanel.fontColor = "White";
+		topPanel.text = "my title";
+		topPanel.Refresh();
+
+		var button1 = new HtmlButton(form);
+		button1.left = 200;
+		button1.top = 200;
+		button1.text = "ZH/EN"
+		button1.imageUrl = "../img/lg.png";
+		button1.onclick = function () {
+			/*memo1.setText( edit1.getText() );
+			memo1.setLeft( memo1.getLeft() + 10);
+			topPanel.setAlign("top");
+			memo1.setAlign("center");*/
+			label1.setText("年龄：");
+			label1.setFontColor("white");
+			img1.setImageUrl("http://p2.so.qhimgs1.com/t01da28607bb5a51272.jpg");
+			checkbox1.setChecked( !checkbox1.getChecked() );
+			//radio1.setChecked( !radio1.getChecked() );
+			memo1.setText( radio1.getSelectedValue() );
+
+		}
+		button1.Refresh();
+
+		var edit1 = new HtmlEdit(form);
+		edit1.text = "mytest";
+		edit1.left = 10;
+		edit1.top = 10;
+		edit1.onchange = function (){
+			memo1.setText( edit1.getText() );
+		}
+		edit1.Refresh();
+
+		var memo1 = new HtmlMemo(form);
+		memo1.text = "mytest";
+		memo1.left = 100;
+		memo1.top = 100;
+		memo1.Refresh();
+
+		var label1 = new HtmlLabel(form);
+		label1.text = "姓名";
+		label1.left = 100;
+		label1.top = 300;
+		label1.Refresh();
+
+		var img1 = new HtmlImage(form);
+		img1.imageUrl = "http://p0.so.qhimgs1.com/t019dcfa10d0479f7ec.jpg";
+		img1.left = 100;
+		img1.top = 330;
+		img1.width = 200;
+		img1.height = 200;
+		img1.onclick = function(){
+			alert(img1.imageUrl);
+		}
+		img1.Refresh();
+
+		var checkbox1 = new HtmlCheckBox(form);
+		checkbox1.left = 400;
+		checkbox1.top = 330;
+		checkbox1.value = "avc";
+		checkbox1.caption = "测试";
+		checkbox1.onclick = function(){
+			alert(img1.imageUrl);
+		}
+		checkbox1.Refresh();
+
+		var radio1 = new HtmlRadio(form);
+		radio1.left = 480;
+		radio1.top = 330;
+		radio1.value = "1";
+		radio1.caption = "男";
+		radio1.setGroupName("sex");
+		radio1.Refresh();
+
+		var radio2 = new HtmlRadio(form);
+		radio2.left = 520;
+		radio2.top = 330;
+		radio2.value = "2";
+		radio2.caption = "女";
+		radio2.setGroupName("sex");
+		radio2.Refresh();
+
+		var groupbox = new HtmlGroupBox(form);
+		groupbox.left = 780;
+		groupbox.top = 330;
+		groupbox.width = 150;
+		groupbox.height = 100;
+		groupbox.text = "my title";
+		groupbox.Refresh();
+
+		var combox = new HtmlCombobox(groupbox);
+		combox.left = 10;
+		combox.top = 20;
+		combox.height = 50;
+		combox.listbox = true;
+		combox.items = [{key:1,text:"delphi"},{key:2,text:"java"}];
+		combox.onchange = function(){
+			alert(combox.value+","+combox.text);
+		}
+		combox.itemIndex = 1;
+		combox.Refresh();
+
+		var popupMenu1 = new HtmlPopupMenu(form);
+		popupMenu1.items = [{id:1,text:"copy"},{id:2,text:"paste"},{id:-1,text:"-"},{id:3,text:"cut"}];
+		popupMenu1.onclick = function(obj,evt){
+			alert(obj.text);
+			alert(evt.id);
+			alert(evt.text);
+		}
+		combox.setPopupMenu(popupMenu1);
+		img1.setPopupMenu(popupMenu1);
+		
+	}
+	
+</script>

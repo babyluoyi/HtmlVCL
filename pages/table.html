@@ -1,0 +1,75 @@
+﻿<meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#eee";
+        form.Refresh();
+
+        var topPanel = new HtmlPanel(form);
+        topPanel.height = 50;
+		topPanel.align = "top";
+        topPanel.Refresh();
+
+        var btnAddRow = new HtmlButton(topPanel);
+        btnAddRow.text = "增加行";
+        btnAddRow.width = 60;
+        btnAddRow.height = 30;
+        btnAddRow.left = 10;
+        btnAddRow.top = 10;
+        btnAddRow.onclick = function(){
+            table.addRowData({"name":"Agatha","age":"22","city":"HongKong","weather":"sunshine","sex":"girl"});
+        }
+        btnAddRow.Refresh();
+
+        var btnAddColumn = new HtmlButton(topPanel);
+        btnAddColumn.text = "增加列";
+        btnAddColumn.width = 60;
+        btnAddColumn.height = 30;
+        btnAddColumn.left = 80;
+        btnAddColumn.top = 10;
+        btnAddColumn.onclick = function(){
+            table.addColumn({"fieldname":"sex","text":"性别"});
+        }
+        btnAddColumn.Refresh();
+
+        var tablePanel = new HtmlPanel(form);
+        tablePanel.align = "center";
+        tablePanel.Refresh();
+
+        var table = new HtmlTable(tablePanel);
+        table.align = "top";
+        table.columns = [{"fieldname":"name","text":"姓名"},
+                        {"fieldname":"age","text":"年龄"},
+                        {"fieldname":"city","text":"城市",},
+                        {"fieldname":"weather","text":"天气"}
+                        ];
+        table.data = [{"name":"Roy","age":"20","city":"chongqing","weather":"cloudy"},
+                        {"name":"Lily","age":"18","city":"chongqing","weather":"sunshine"},
+                        {"name":"Alex","age":"28","city":"hangzhou","weather":"rainy"}
+                        ];
+        table.rowComputeStyle = [{"fieldName":"age","compare":">","val":"18","style":"color:blue;"},
+                                {"fieldName":"age","compare":"=","val":"28","style":"color:red;"}
+                                ];
+        table.cellComputeStyle = [{"fieldName":"name","compare":"like","val":"Alex","style":"font-size:18px;font-weight:bold;"},
+                                {"fieldName":"age","compare":"=","val":"18","style":"font-size:18px;font-weight:bold;"},
+                                {"fieldName":"weather","compare":"=","val":"sunshine","style":"<img style='width:18px;height:18px;' src='../img/e.png' />"},
+                                {"fieldName":"age","compare":"=","val":"18","style":"font-style:italic;"}
+                                ];
+        table.buttonColumnWidth = 150;
+        table.buttons = [{"id":"1","text":"编辑","img":"../img/c.png"},{"id":"2","text":"删除","img":"../img/c.png"}];
+        table.onButtonClick = function(evt){
+            alert(evt.id);
+            alert(JSON.stringify(evt.data));
+        }
+        table.Refresh();
+        
+    }
+</script>
+<body>
+    <table>
+        <tr><th>123</th></tr>>
+    </table>
+</body>

@@ -1,0 +1,62 @@
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#eee";
+        form.Refresh();
+
+        var tabControl = new HtmlTabControl(form);
+        tabControl.align = "center";
+        tabControl.tabs = [{"id":"11","caption":"参数设置","img":"../img/c.png"},
+                            {"id":"22","caption":"用户管理","img":"../img/c.png"},
+                            {"id":"33","caption":"财务管理","img":"../img/e.png"},
+                            {"id":"44","caption":"物资管理","img":"../img/e.png"}];
+        tabControl.tabIndex = 0;
+        //sheet 1
+        var panel1 = new HtmlPanel(tabControl.contentPanel);
+		panel1.align = "center";
+        panel1.Refresh();
+        var edit1 = new HtmlEdit(panel1);
+		edit1.text = "tabSheet 1";
+		edit1.left = 10;
+		edit1.top = 10;
+        edit1.Refresh();
+        
+        //sheet 2
+        var panel2 = new HtmlPanel(tabControl.contentPanel);
+		panel2.align = "center";
+        panel2.Refresh();
+        var edit2 = new HtmlEdit(panel2);
+		edit2.text = "tabSheet 2";
+		edit2.left = 10;
+		edit2.top = 10;
+        edit2.Refresh();
+
+        //sheet 3
+        var panel3 = new HtmlPanel(tabControl.contentPanel);
+		panel3.align = "center";
+        panel3.Refresh();
+        var edit3 = new HtmlEdit(panel3);
+		edit3.text = "tabSheet 3";
+		edit3.left = 10;
+		edit3.top = 10;
+        edit3.Refresh();
+
+        //sheet 4
+        var panel4 = new HtmlPanel(tabControl.contentPanel);
+		panel4.align = "center";
+        panel4.Refresh();
+        var edit4 = new HtmlEdit(panel4);
+		edit4.text = "tabSheet 4";
+		edit4.left = 10;
+		edit4.top = 10;
+        edit4.Refresh();
+
+        tabControl.sheets = [panel1,panel2,panel3,panel4];
+        
+        tabControl.Refresh();
+    }
+</script>

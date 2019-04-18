@@ -1,0 +1,192 @@
+<meta charset="utf-8"> 
+    <link rel="stylesheet" href="css/vcl.css">
+    <script type="text/javascript" src="js/vcl.js"></script>
+    <script type="text/javascript">
+        function main() {
+            var form = new HtmlForm(null);
+            form.align = "center";
+            form.color = "blue";
+            form.Refresh();
+
+            var popupMenu1 = new HtmlPopupMenu(form);
+            popupMenu1.items = [{id:1,text:"copy"},{id:2,text:"paste"},{id:-1,text:"-"},{id:3,text:"cut"}];
+            popupMenu1.onclick = function(obj,evt){
+                alert(obj.text);
+                alert(evt.id);
+                alert(evt.text);
+            }
+
+            var topPanel = new HtmlPanel(form);
+            topPanel.align = "top";
+            topPanel.alignment = "center";
+            topPanel.color = "#333";
+            topPanel.fontSize = 14;
+            topPanel.fontColor = "White";
+            topPanel.name="topPanel1";
+            //topPanel.text = "<h1>ChromeWebBrowser.net User Guide</h1>";
+            topPanel.Refresh();
+
+            var logoPanel = new HtmlPanel(topPanel);
+            logoPanel.align = "left";
+            logoPanel.width = 200;
+            logoPanel.Refresh();
+
+            var logoImg = new HtmlImage(logoPanel);
+            logoImg.imageUrl = "img/html.png";
+            logoImg.left = 10;
+            logoImg.top = 18;
+            logoImg.width = 40;
+            logoImg.height = 22;
+            logoImg.Refresh();
+
+            var top_right_panel = new HtmlPanel(topPanel);
+            top_right_panel.align = "right";
+            top_right_panel.width = 200;
+            top_right_panel.Refresh();
+
+            var userImg = new HtmlImage(top_right_panel);
+            userImg.imageUrl = "img/p.png";
+            userImg.left = 10;
+            userImg.top = 20;
+            userImg.width = 20;
+            userImg.height = 20;
+            userImg.Refresh();
+
+            var userLabel = new HtmlLabel(top_right_panel);
+            userLabel.alignment = "left";
+            userLabel.left = 40;
+            userLabel.top = 23;
+            userLabel.width = "auto";
+            userLabel.height = 25;
+            userLabel.text = "Hi,Roy";
+            userLabel.fontColor = "white";
+            userLabel.fontSize = 14;
+            userLabel.Refresh();
+
+            var quitButton = new HtmlLinkButton(top_right_panel);
+            quitButton.top = 20;
+            quitButton.left = 120;
+            quitButton.width = "auto";
+            quitButton.height = 25;
+            quitButton.text = "退出";
+            quitButton.fontColor = "white";
+            quitButton.fontSize = 14;
+            quitButton.setUrl("index.html");
+            quitButton.Refresh();
+
+            var top_center_panel = new HtmlPanel(topPanel);
+            top_center_panel.align = "center";
+            top_center_panel.Refresh();
+
+            var popupMenu2 = new HtmlPopupMenu(form);
+            popupMenu2.items = [{id:1,text:"白血病"},{id:2,text:"肺炎"},{id:-1,text:"-"},{id:3,text:"流感"}];
+            popupMenu2.onclick = function(obj,evt){
+                alert(obj.text);
+                alert(evt.id);
+                alert(evt.text);
+            }
+            var top_center_DropMenu = new HtmlDropMenu(top_center_panel);
+            top_center_DropMenu.text = "ICD-10疾病";
+            top_center_DropMenu.top = 30;
+            top_center_DropMenu.left = 10;
+            top_center_DropMenu.height = 20;
+            top_center_DropMenu.fontColor = "white";
+            top_center_DropMenu.setDropMenu(popupMenu2);
+            top_center_DropMenu.Refresh();
+
+            var top_center_DropMenu1 = new HtmlDropMenu(top_center_panel);
+            top_center_DropMenu1.text = "收费项目";
+            top_center_DropMenu1.top = 30;
+            top_center_DropMenu1.left = 100;
+            top_center_DropMenu1.height = 20;
+            top_center_DropMenu1.fontColor = "white";
+            top_center_DropMenu1.setDropMenu(popupMenu1);
+            top_center_DropMenu1.Refresh();
+
+            var titleLabel = new HtmlLabel(logoPanel);
+            titleLabel.alignment = "left";
+            titleLabel.left = 60;
+            titleLabel.top = 20;
+            titleLabel.width = 100;
+            titleLabel.height = 25;
+            titleLabel.text = "VCL";
+            titleLabel.fontColor = "#00ffe2";
+            titleLabel.fontSize = 16;
+            titleLabel.Refresh();
+
+            var leftPanel = new HtmlPanel(form);
+            leftPanel.align = "left";
+            leftPanel.color = "#e6e6e6";
+            leftPanel.width = "200";
+            leftPanel.Refresh();
+
+            var frame = new HtmlFrame(form);
+            frame.align = "center";
+            frame.color = "White";
+            // frame.setUrl("pages/method-EN.html");
+            frame.setUrl("pages/tabs.html");
+            frame.Refresh();
+
+            var bottomPanel = new HtmlPanel(form);
+            bottomPanel.align = "bottom";
+            bottomPanel.alignment = "center";
+            bottomPanel.color = "#000";
+            bottomPanel.height = 25;
+            bottomPanel.fontColor = "White";
+            bottomPanel.text = "@Author: Sashulin Roy";
+            bottomPanel.Refresh();
+
+            var navBar = new HtmlNavBar(leftPanel);
+            navBar.align = "center";
+            navBar.alignment = "center";
+            navBar.color = "#393D49";
+            navBar.items = [{"title":"countries","items":[{"id":"1","caption":"China","img":"img/p.png"},{"id":"2","caption":"USA","img":"img/a.png"}]},
+                            {"title":"city","items":[{"id":"11","caption":"HangZhou","img":"img/b.png"},{"id":"22","caption":"BeiJing","img":"img/c.png"}]},
+                            {"title":"系统","items":[{"id":"12","caption":"Table","img":"img/d.png"},{"id":"13","caption":"LIS","img":"img/e.png"},{"id":"14","caption":"PACS"},
+                                    {"id":"15","caption":"RIS","img":"img/f.png"},{"id":"16","caption":"NIS","img":"img/h.png"},{"id":"17","caption":"院感"},
+                                    {"id":"18","caption":"医疗质控"},{"id":"19","caption":"危急值管理"},{"id":"20","caption":"物资管理"},
+                                    {"id":"21","caption":"HRP","img":"img/g.png"},{"id":"23","caption":"人事系统","img":"img/p.png"},{"id":"24","caption":"成本管控"}]},
+                            {"title":"飞机","items":[{"id":"31","caption":"波音"},{"id":"32","caption":"空客"},{"id":"32","caption":"空客"},{"id":"32","caption":"空客"}]}
+                            ];
+            navBar.onGroupItemClick = function(event){
+                //alert(event.control.id+":"+event.control.text); 
+                var url = "";
+                switch(event.control.id){
+                    case "1":
+                        url = "http://www.baidu.com";
+                        break;
+                    case "2":
+                        url = "http://www.bing.com.cn";
+                        break;
+                    case "12":
+                        url = "pages/table.html";
+                        break;
+                    default:
+                        url = "pages/method-EN.html";
+                        break;
+                }
+                frame.setUrl(url);
+            }
+            navBar.Refresh();
+            // var button1 = new HtmlButton(leftPanel);
+            // button1.left = 20;
+            // button1.top = 10;
+            // button1.text = "ZH/EN"
+            // button1.imageUrl = "img/lg.png";
+            // button1.onclick = function () {
+            //     if (application.defaultLanguage == "EN") {
+            //         application.defaultLanguage = "ZH";
+            //     }
+            //     else {
+            //         application.defaultLanguage = "EN";
+            //     }
+            //     frame.setUrl("pages/method-" + application.defaultLanguage + ".html");
+            // }
+            // button1.Refresh();
+            
+
+            //button1.setPopupMenu(popupMenu1);
+            //navBar.setPopupMenu(popupMenu1);
+            //a.style.zIndex
+        }
+    </script>

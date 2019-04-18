@@ -1,0 +1,35 @@
+﻿<meta charset="utf-8"> 
+<link rel="stylesheet" href="css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#eee";
+        form.Refresh();
+
+        var navBar = new HtmlNavBar(form);
+        navBar.align = "left";
+        navBar.alignment = "center";
+        navBar.width = 200;
+        navBar.color = "#393D49";
+        navBar.items = [{"title":"countries","items":[{"id":"1","caption":"China"},{"id":"2","caption":"USA"}]},
+                        {"title":"city","items":[{"id":"11","caption":"HangZhou"},{"id":"22","caption":"BeiJing"}]},
+                        {"title":"系统","items":[{"id":"12","caption":"HIS"},{"id":"13","caption":"LIS"},{"id":"14","caption":"PACS"}]},
+                        {"title":"飞机","items":[{"id":"31","caption":"波音"},{"id":"32","caption":"空客"}]}
+                        ];
+        navBar.Refresh();
+        
+        var img1 = new HtmlImage(form);
+		img1.imageUrl = "http://p0.so.qhimgs1.com/t019dcfa10d0479f7ec.jpg";
+		img1.left = 300;
+		img1.top = 330;
+		img1.width = 200;
+		img1.height = 200;
+		img1.onclick = function(){
+			alert(img1.imageUrl);
+		}
+		img1.Refresh();
+        
+    }
+</script>
