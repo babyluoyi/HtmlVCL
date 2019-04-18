@@ -1,0 +1,25 @@
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#eee";
+        form.Refresh();
+
+        var btnAddRow = new HtmlButton(form);
+        btnAddRow.text = "弹出窗口";
+        btnAddRow.width = 80;
+        btnAddRow.height = 30;
+        btnAddRow.left = 10;
+        btnAddRow.top = 10;
+        btnAddRow.onclick = function(){
+            dialog.show();
+        }
+        btnAddRow.Refresh();
+
+        var dialog = new HtmlDialog(form);
+        dialog.Refresh();
+    }
+</script>
