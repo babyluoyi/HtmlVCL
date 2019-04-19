@@ -8,17 +8,6 @@
         form.color = "#eee";
         form.Refresh();
 
-        var btnAddRow = new HtmlButton(form);
-        btnAddRow.text = "Show Dialog";
-        btnAddRow.width = 120;
-        btnAddRow.height = 30;
-        btnAddRow.left = 10;
-        btnAddRow.top = 10;
-        btnAddRow.onclick = function(){
-            dialog.show();
-        }
-        btnAddRow.Refresh();
-
         var dialog = new HtmlDialog(form);
         dialog.title = "Dialog title";
         dialog.Refresh();
@@ -42,5 +31,16 @@
             dialog.close();
         }
         btnClose.Refresh();
+
+        var btnAddRow = new HtmlButton(form);
+        btnAddRow.text = "Show Dialog";
+        btnAddRow.width = 120;
+        btnAddRow.height = 30;
+        btnAddRow.left = 10;
+        btnAddRow.top = 10;
+        btnAddRow.onclick = function(){
+            dialog.show();
+        }
+        btnAddRow.Refresh();
     }
 </script>
