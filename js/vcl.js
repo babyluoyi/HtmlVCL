@@ -1309,6 +1309,7 @@ function HtmlDialog(parentElement) {
     _this.height = 300;
     _this.visible = false;
     _this.align = "center";
+    _this.title = "";
     _this.contentPanel = null;
     _this.create();
     _this.close = function(){
@@ -1331,11 +1332,20 @@ function HtmlDialog(parentElement) {
         titleBar.height = "30";
         titleBar.Refresh();
         titleBar.setColor("#eee");
-        var btnClose = new HtmlButton(titleBar);
+        var btnClose = new HtmlImage(titleBar);
         btnClose.align = "right";
         btnClose.width = "30";
         btnClose.imageUrl = "../img/close.png";
+        btnClose.onclick = function(){
+            _this.close();
+        }
         btnClose.Refresh();
+        var title = new HtmlLabel(titleBar);
+        title.align = "center";
+        title.alignment = "left";
+        title.text = _this.title;
+        title.setCss("padding-left:10px;padding-top:8px;");
+        title.Refresh();
         _this.contentPanel = new HtmlPanel(dialogForm);
         _this.contentPanel.align = "center";
         _this.contentPanel.Refresh();
