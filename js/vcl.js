@@ -1377,6 +1377,7 @@ function HtmlDialog(parentElement) {
         _this.update();
         _this.setVisible(_this.visible);
         _this.setColor("rgba(10, 10, 10, 0.4)");
+        _this.self.style.zIndex = 999;
     }
     return _this;
 }
