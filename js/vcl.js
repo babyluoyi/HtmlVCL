@@ -1368,7 +1368,7 @@ function HtmlDialog(parentElement) {
         title.align = "center";
         title.alignment = "left";
         title.text = _this.title;
-        title.setCss("padding-left:10px;padding-top:8px;");
+        title.setCss("padding-left:10px;padding-top:6px;");
         title.Refresh();
         _this.contentPanel = new HtmlPanel(dialogForm);
         _this.contentPanel.align = "center";
