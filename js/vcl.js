@@ -319,20 +319,23 @@ function Control(ParentControl,htmlType,htmlClass)
                     ARight += control.self.clientWidth;
                 }
                 /*居中时，每个子控件大小一致*/
-                for (var i = 0; i < centerArray.length; i++) {
+                for (var i = centerArray.length-1; i >=0 ; i++) {
                     var control = centerArray[i];
                     control.self.style.left = ALeft + "px";
                     control.self.style.top = ATop + "px";
                     var offw = 0;
                     var offh = 0;
-                    if (control.self.tagName == "INPUT")
-                        offw = 4;
-                    if (control.self.tagName == "TEXTAREA"){
-                        offw = 6;
-                        offh = 6;
-                    }
-                    control.self.style.width = (this.self.clientWidth - ALeft - ARight - offw) + "px";
-                    control.self.style.height = (this.self.clientHeight - ATop - ABottom - offh) + "px";
+                    // if (control.self.tagName == "INPUT")
+                    //     offw = 1;
+                    // if (control.self.tagName == "TEXTAREA"){
+                    //     offw = 1;
+                    //     offh = 1;
+                    // }
+                    var _w = (control.parent.self.clientWidth - ALeft - ARight - offw) + "px";
+                    var _h = (control.parent.self.clientHeight - ATop - ABottom - offh) + "px";
+
+                    control.self.style.width = _w;
+                    control.self.style.height = _h;
                     break;
                 }
             },
@@ -342,21 +345,25 @@ function Control(ParentControl,htmlType,htmlClass)
                         htmlElement.style.left = "0px";
                         htmlElement.style.top = "0px";
                         htmlElement.style.height = parentElement.clientHeight + "px";
+                        _this.height = parentElement.clientHeight;
                     }
                     if (this.align == "top") {
                         htmlElement.style.left = "0px";
                         htmlElement.style.top = "0px";
                         htmlElement.style.width = parentElement.clientWidth + "px";
+                        _this.width = parentElement.clientWidth;
                     }
                     if (this.align == "right") {
                         htmlElement.style.left = (parentElement.clientWidth - htmlElement.clientWidth) + "px";
                         htmlElement.style.top = "0px";
                         htmlElement.style.height = parentElement.clientHeight + "px";
+                        _this.height = parentElement.clientHeight;
                     }
                     if (this.align == "bottom") {
                         htmlElement.style.left = "0px";
                         htmlElement.style.top = (parentElement.clientHeight - htmlElement.clientHeight) + "px";
                         htmlElement.style.width = parentElement.clientWidth + "px";
+                        _this.width = parentElement.clientWidth;
                     }
                     if (this.align == "center") {
                         htmlElement.style.left = "0px";
@@ -364,6 +371,7 @@ function Control(ParentControl,htmlType,htmlClass)
                         htmlElement.style.width = this.width + "px";
                         htmlElement.style.height = this.height + "px";
                     }
+                    
                 }
                 if (this.align == "none") {
                     htmlElement.style.left = this.left+ "px";
@@ -398,8 +406,9 @@ function Control(ParentControl,htmlType,htmlClass)
             onclick:null,
             onchange:null,
             update: function () {
-                this.create();
                 if (this.parent && this.parent.self) this.parent.update();
+                this.create();
+                
                 if (this.onclick){
                     htmlElement.onclick = this.onclick;
                 }
@@ -474,8 +483,10 @@ function HtmlButton(parentElement) {
     _this.text = "";
     _this.imageUrl = ""
     _this.Refresh = function () {
-        if (_this.imageUrl != "")
-            _this.self.innerHTML = "<img src='" + _this.imageUrl + "' />" + _this.text;
+        if (_this.imageUrl != ""){
+            var imgcss = "width:"+_this.self.clientWidth+";height:"+_this.self.clientHeight+";";
+            _this.self.innerHTML = "<img src='" + _this.imageUrl + "' style='"+imgcss+"' />" + _this.text;
+        }
         else
         _this.self.innerHTML =  _this.text;
         _this.update();
@@ -1028,9 +1039,12 @@ function HtmlTabControl(parentElement) {
     _this.tabLabels = new Array();
     _this.sheets = null;
     _this.contentPanel = new HtmlPanel(_this);
+    _this.contentPanel.align = "center";
+    _this.contentPanel.name = "tabControl.contentPanel";
     _this.create();
-    _this.Refresh = function () {
+    _this.Refresh = function(){
         _this.update();
+        _this.contentPanel.Refresh();
         if (_this.tabs){
             var tabsPanel = new HtmlPanel(_this);
             tabsPanel.align = "top";
@@ -1076,7 +1090,6 @@ function HtmlTabControl(parentElement) {
                 itemIndex += 1;
             });
             _this.contentPanel.setCss("border-top:1px solid #cac3c3");
-            _this.contentPanel.align = "center";
             
 
             if(_this.sheets){
@@ -1089,8 +1102,11 @@ function HtmlTabControl(parentElement) {
             }
 
             tabsPanel.Refresh();
-            _this.contentPanel.Refresh();
+            
         }
+    }
+    _this.addSheets = function (sheets) {
+        _this.sheets = sheets;
     }
     return _this;
 };
@@ -1315,6 +1331,11 @@ function HtmlDialog(parentElement) {
         titleBar.height = "30";
         titleBar.Refresh();
         titleBar.setColor("#eee");
+        var btnClose = new HtmlButton(titleBar);
+        btnClose.align = "right";
+        btnClose.width = "30";
+        btnClose.imageUrl = "../img/close.png";
+        btnClose.Refresh();
         _this.contentPanel = new HtmlPanel(dialogForm);
         _this.contentPanel.align = "center";
         _this.contentPanel.Refresh();
