@@ -15,31 +15,39 @@
                             {"id":"33","caption":"财务管理","img":"../img/e.png"},
                             {"id":"44","caption":"物资管理","img":"../img/e.png"}];
         tabControl.tabIndex = 0;
+        tabControl.Refresh();
         //sheet 1
         var panel1 = new HtmlPanel(tabControl.contentPanel);
+        panel1.name = "sheet1";
 		panel1.align = "center";
         panel1.Refresh();
-        var edit1 = new HtmlEdit(panel1);
-		edit1.text = "tabSheet 1";
+        var edit1 = new HtmlMemo(panel1);
+        edit1.text = "tabSheet 1";
+        edit1.align = "center";
 		edit1.left = 10;
 		edit1.top = 10;
         edit1.Refresh();
         
+        
         //sheet 2
         var panel2 = new HtmlPanel(tabControl.contentPanel);
+        panel2.name = "sheet2";
 		panel2.align = "center";
         panel2.Refresh();
-        var edit2 = new HtmlEdit(panel2);
-		edit2.text = "tabSheet 2";
+        var edit2 = new HtmlMemo(panel2);
+        edit2.text = "tabSheet 2";
+        //edit2.align = "center";
 		edit2.left = 10;
 		edit2.top = 10;
         edit2.Refresh();
 
         //sheet 3
         var panel3 = new HtmlPanel(tabControl.contentPanel);
+        panel3.name = "sheet3";
 		panel3.align = "center";
         panel3.Refresh();
-        var edit3 = new HtmlEdit(panel3);
+        var edit3 = new HtmlMemo(panel3);
+        edit3.align = "center";
 		edit3.text = "tabSheet 3";
 		edit3.left = 10;
 		edit3.top = 10;
@@ -47,16 +55,15 @@
 
         //sheet 4
         var panel4 = new HtmlPanel(tabControl.contentPanel);
+        panel4.name = "sheet4";
 		panel4.align = "center";
         panel4.Refresh();
-        var edit4 = new HtmlEdit(panel4);
-		edit4.text = "tabSheet 4";
+        var edit4 = new HtmlMemo(panel4);
+        edit4.text = "tabSheet 4";
+        edit4.align = "center";
 		edit4.left = 10;
 		edit4.top = 10;
         edit4.Refresh();
-
-        tabControl.sheets = [panel1,panel2,panel3,panel4];
-        
-        tabControl.Refresh();
+        tabControl.addSheets([panel1,panel2,panel3,panel4]);
     }
 </script>
