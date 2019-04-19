@@ -1,4 +1,5 @@
-
+input{outline: none;}
+textarea{outline: none;}
 ::-webkit-scrollbar {
     display:none
 }    
