@@ -9,8 +9,8 @@
         form.Refresh();
 
         var btnAddRow = new HtmlButton(form);
-        btnAddRow.text = "弹出窗口";
-        btnAddRow.width = 80;
+        btnAddRow.text = "Show Dialog";
+        btnAddRow.width = 120;
         btnAddRow.height = 30;
         btnAddRow.left = 10;
         btnAddRow.top = 10;
@@ -20,6 +20,7 @@
         btnAddRow.Refresh();
 
         var dialog = new HtmlDialog(form);
+        dialog.title = "Dialog title";
         dialog.Refresh();
     }
 </script>
