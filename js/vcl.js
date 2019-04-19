@@ -104,7 +104,7 @@ function Control(ParentControl,htmlType,htmlClass)
                 return this.className;
             },
 
-            fontName: "Courier New",
+            fontName: "微软雅黑",
             setFontName:function(val){
                 this.fontName = val;
                 htmlElement.style.fontFamily = val;
@@ -216,6 +216,8 @@ function Control(ParentControl,htmlType,htmlClass)
             getTop:function(){
                 return this.top;
             },
+            right:0,
+            bottom:0,
 
             width : 100,
             setWidth:function(val){
@@ -269,6 +271,16 @@ function Control(ParentControl,htmlType,htmlClass)
             },
 
             //methods
+            getClientWidth : function(){
+                var w = this.self.clientWidth;
+                if (w == 0) w = this.width;
+                return w;
+            },
+            getClientHeight : function(){
+                var h = this.self.clientHeight;
+                if (h == 0) h = this.height;
+                return h;
+            },
             resize: function () {
                 /*计算子控件位置*/
                 var leftArray = new Array();
@@ -290,33 +302,37 @@ function Control(ParentControl,htmlType,htmlClass)
                     var control = topArray[i];
                     control.self.style.left = ALeft + "px";
                     control.self.style.top = ATop + "px";
-                    control.self.style.width = this.self.clientWidth + "px";
+                    control.self.style.width = this.getClientWidth() + "px";
                     control.self.style.height = control.height;
-                    ATop += control.self.clientHeight;
+                    ATop += control.getClientHeight();
+                    control.width = this.getClientWidth();
                 }
                 for (var i = 0; i < bottomArray.length; i++) {
                     var control = bottomArray[i];
-                    control.self.style.width = this.self.clientWidth + "px";
+                    control.self.style.width = this.getClientWidth() + "px";
                     control.self.style.height = control.height;
                     control.self.style.left = ALeft + "px";
-                    control.self.style.top = (this.self.clientHeight - control.self.clientHeight - ABottom) + "px";
-                    ABottom += control.self.clientHeight;
+                    control.self.style.top = (this.getClientHeight() - control.getClientHeight() - ABottom) + "px";
+                    ABottom += control.getClientHeight();
+                    control.width = this.getClientWidth();
                 }
                 for (var i = 0; i < leftArray.length; i++) {
                     var control = leftArray[i];
                     control.self.style.left = ALeft + "px";
                     control.self.style.top = ATop + "px";
                     control.self.style.width = control.width;
-                    control.self.style.height = (this.self.clientHeight - ATop - ABottom) + "px";
-                    ALeft += control.self.clientWidth;
+                    control.self.style.height = (this.getClientHeight() - ATop - ABottom) + "px";
+                    ALeft += control.getClientWidth();
+                    control.height = this.getClientHeight() - ATop - ABottom;
                 }
                 for (var i = 0; i < rightArray.length; i++) {
                     var control = rightArray[i];
                     control.self.style.width = control.width;
-                    control.self.style.height = (this.self.clientHeight - ATop - ABottom) + "px";
-                    control.self.style.left = (this.self.parentElement.clientWidth - control.self.clientWidth - ARight) + "px";
+                    control.self.style.height = (this.getClientHeight() - ATop - ABottom) + "px";
+                    control.self.style.left = (this.getClientWidth() - control.getClientWidth() - ARight - control.right) + "px";
                     control.self.style.top = ATop + "px";
-                    ARight += control.self.clientWidth;
+                    ARight += control.getClientWidth();
+                    control.height = this.getClientHeight() - ATop - ABottom;
                 }
                 /*居中时，每个子控件大小一致*/
                 for (var i = centerArray.length-1; i >=0 ; i++) {
@@ -331,11 +347,17 @@ function Control(ParentControl,htmlType,htmlClass)
                     //     offw = 1;
                     //     offh = 1;
                     // }
-                    var _w = (control.parent.self.clientWidth - ALeft - ARight - offw) + "px";
-                    var _h = (control.parent.self.clientHeight - ATop - ABottom - offh) + "px";
+                    var _w = control.parent.self.clientWidth;
+                    if (_w == 0) _w = control.parent.width;
+                    _w = (_w - ALeft - ARight - offw)
+                    var _h = control.parent.self.clientHeight;
+                    if (_h == 0) _h = control.parent.height;
+                     _h = (_h - ATop - ABottom - offh);
 
-                    control.self.style.width = _w;
-                    control.self.style.height = _h;
+                    control.self.style.width = _w + "px";;
+                    control.self.style.height = _h  + "px";
+                    control.width = _w;
+                    control.height = _h;
                     break;
                 }
             },
@@ -542,6 +564,7 @@ function HtmlMemo(parentElement) {
     _this.alignment = "left";
     _this.text = "";
     _this.Refresh = function () {
+        _this.self.style.resize = "none";
         _this.update();
     }
     return _this;
@@ -1327,6 +1350,7 @@ function HtmlDialog(parentElement) {
         dialogForm.top = (parentElement.height - dialogHeight) / 2;
         dialogForm.left = (parentElement.width - dialogWidth) / 2;
         dialogForm.setCss("border:1px solid #eee;")
+        dialogForm.Refresh();
         var titleBar = new HtmlPanel(dialogForm);
         titleBar.align = "top";
         titleBar.height = "30";
