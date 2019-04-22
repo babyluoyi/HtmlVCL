@@ -1381,3 +1381,138 @@ function HtmlDialog(parentElement) {
     }
     return _this;
 }
+
+var HtmlMessageBox = {
+    createInfo:function(form,title,text,callback){
+        this.info_dialog = new HtmlDialog(form);
+        this.info_dialog.title = title;
+        this.info_dialog.width = 256;
+        this.info_dialog.height = 150;
+        this.info_dialog.Refresh();
+
+        this.info_label = new HtmlLabel(this.info_dialog.contentPanel);
+        this.info_label.name = "label`";
+        this.info_label.align = "center";
+        this.info_label.alignment = "center";
+        this.info_label.setCss("padding-top:30px;");
+        this.info_label.text = text;
+        this.info_label.Refresh();
+
+        var footer = new HtmlPanel(this.info_dialog.contentPanel);
+        footer.align = "bottom";
+        footer.height = 40;
+        footer.Refresh();
+        var btnClose = new HtmlButton(footer);
+        btnClose.text = "ok";
+        btnClose.width = 60;
+        btnClose.height = 30;
+        btnClose.left = footer.getClientWidth() - btnClose.width - 10;
+        btnClose.top = 5;
+        btnClose.onclick = function(){
+            HtmlMessageBox.info_dialog.close();
+            callback();
+        }
+        btnClose.Refresh();
+        this.info_created = true;
+    },
+    info_created:false,
+    info_dialog:null,
+    info_label:null,
+
+    createQuestion : function(form,title,text,callback){
+        this.qs_dialog = new HtmlDialog(form);
+        this.qs_dialog.title = title;
+        this.qs_dialog.width = 256;
+        this.qs_dialog.height = 150;
+        this.qs_dialog.Refresh();
+
+        this.qs_label = new HtmlLabel(this.qs_dialog.contentPanel);
+        this.qs_label.name = "label`";
+        this.qs_label.align = "center";
+        this.qs_label.alignment = "center";
+        this.qs_label.setCss("padding-top:30px;");
+        this.qs_label.text = text;
+        this.qs_label.Refresh();
+
+        var footer = new HtmlPanel(this.qs_dialog.contentPanel);
+        footer.align = "bottom";
+        footer.height = 40;
+        footer.Refresh();
+        var btnNo = new HtmlButton(footer);
+        btnNo.text = "No";
+        btnNo.width = 60;
+        btnNo.height = 30;
+        btnNo.left = footer.getClientWidth() - btnNo.width - 10;
+        btnNo.top = 5;
+        btnNo.onclick = function(){
+            HtmlMessageBox.qs_dialog.close();
+            callback("NO");
+        }
+        btnNo.Refresh();
+        var btnYes = new HtmlButton(footer);
+        btnYes.text = "Yes";
+        btnYes.width = 60;
+        btnYes.height = 30;
+        btnYes.left = footer.getClientWidth() - btnNo.width - btnYes.width - 20;
+        btnYes.top = 5;
+        btnYes.onclick = function(){
+            HtmlMessageBox.qs_dialog.close();
+            callback("Yes");
+        }
+        btnYes.Refresh();
+        this.qs_created = true;
+    },
+    qs_created:false,
+    qs_dialog:null,
+    qs_label:null,
+
+    info:function(form,title,text,callback){
+        if (!this.info_created) this.createInfo(form,title,text,callback);
+        this.info_label.text = text;
+        this.info_dialog.show();
+    },
+    question:function(form,title,text,callback){
+        if (!this.qs_created) this.createQuestion(form,title,text,callback);
+        this.qs_label.text = text;
+        this.qs_dialog.show();
+    }
+}
+
+// function HtmlMessageBox(parentElement) {
+//     var dialog = new HtmlDialog(parentElement);
+//     dialog.title = "Dialog title";
+//     dialog.Refresh();
+//     var _self = {
+//         dialog:dialog,
+//         info:function(){
+
+//         },
+//         question:function(){
+
+//         },
+//         warn:function(){
+
+//         }
+//     }
+//     var memo1 = new HtmlMemo(dialog.contentPanel);
+//     memo1.name = "memo1";
+//     memo1.align = "center";
+//     memo1.text = "what's this?";
+//     memo1.Refresh();
+
+//     var footer = new HtmlPanel(dialog.contentPanel);
+//     footer.align = "bottom";
+//     footer.height = 40;
+//     footer.Refresh();
+//     var btnClose = new HtmlButton(footer);
+//     btnClose.text = "close";
+//     btnClose.width = 60;
+//     btnClose.height = 30;
+//     btnClose.left = footer.getClientWidth() - btnClose.width - 10;
+//     btnClose.top = 5;
+//     btnClose.onclick = function(){
+//         dialog.close();
+//     }
+//     btnClose.Refresh();
+//     return dialog;
+// }
