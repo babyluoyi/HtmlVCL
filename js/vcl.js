@@ -1113,23 +1113,20 @@ function HtmlTabControl(parentElement) {
                 itemIndex += 1;
             });
             _this.contentPanel.setCss("border-top:1px solid #cac3c3");
-            
-
-            if(_this.sheets){
-                _this.sheets.forEach(function(sheet){
-                    sheet.setAlign("none");
-                    sheet.setVisible(false);
-                });
-                _this.sheets[ _this.tabIndex ].setVisible(true);
-                _this.sheets[ _this.tabIndex ].setAlign("none");
-            }
-
             tabsPanel.Refresh();
             
         }
     }
     _this.addSheets = function (sheets) {
         _this.sheets = sheets;
+        if(_this.sheets){
+            _this.sheets.forEach(function(sheet){
+                sheet.setAlign("none");
+                sheet.setVisible(false);
+            });
+            _this.sheets[ _this.tabIndex ].setVisible(true);
+            _this.sheets[ _this.tabIndex ].setAlign("center");
+        }
     }
     return _this;
 };
@@ -1477,42 +1474,3 @@ var HtmlMessageBox = {
         this.qs_dialog.show();
     }
 }
-
-// function HtmlMessageBox(parentElement) {
-//     var dialog = new HtmlDialog(parentElement);
-//     dialog.title = "Dialog title";
-//     dialog.Refresh();
-//     var _self = {
-//         dialog:dialog,
-//         info:function(){
-
-//         },
-//         question:function(){
-
-//         },
-//         warn:function(){
-
-//         }
-//     }
-//     var memo1 = new HtmlMemo(dialog.contentPanel);
-//     memo1.name = "memo1";
-//     memo1.align = "center";
-//     memo1.text = "what's this?";
-//     memo1.Refresh();
-
-//     var footer = new HtmlPanel(dialog.contentPanel);
-//     footer.align = "bottom";
-//     footer.height = 40;
-//     footer.Refresh();
-//     var btnClose = new HtmlButton(footer);
-//     btnClose.text = "close";
-//     btnClose.width = 60;
-//     btnClose.height = 30;
-//     btnClose.left = footer.getClientWidth() - btnClose.width - 10;
-//     btnClose.top = 5;
-//     btnClose.onclick = function(){
-//         dialog.close();
-//     }
-//     btnClose.Refresh();
-//     return dialog;
-// }
