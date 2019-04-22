@@ -341,12 +341,7 @@ function Control(ParentControl,htmlType,htmlClass)
                     control.self.style.top = ATop + "px";
                     var offw = 0;
                     var offh = 0;
-                    // if (control.self.tagName == "INPUT")
-                    //     offw = 1;
-                    // if (control.self.tagName == "TEXTAREA"){
-                    //     offw = 1;
-                    //     offh = 1;
-                    // }
+
                     var _w = control.parent.self.clientWidth;
                     if (_w == 0) _w = control.parent.width;
                     _w = (_w - ALeft - ARight - offw)
