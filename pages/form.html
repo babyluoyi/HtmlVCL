@@ -1,0 +1,41 @@
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#237f82";
+        form.Refresh();
+
+        var button1 = new HtmlButton(form);
+        button1.text = "#3623ff";
+        button1.width = 150;
+        button1.height = 30;
+        button1.left = 10;
+        button1.top = 10;
+        button1.onclick = function(){
+            form.setColor("#3623ff");
+        }
+        button1.Refresh();
+
+        var button2 = new HtmlButton(form);
+        button2.text = "#237f82";
+        button2.width = 150;
+        button2.height = 30;
+        button2.left = 10;
+        button2.top = 50;
+        button2.onclick = function(){
+            form.setColor("#237f82");
+        }
+        button2.Refresh();
+
+        var memo1 = new HtmlMemo(form);
+        memo1.name = "memo1";
+        memo1.align = "right";
+        memo1.width = 300;
+        memo1.text = "HtmlForm:"+
+                    "窗体组件，其他所以组件都将基于它来布局。";
+        memo1.Refresh();
+    }
+</script>
