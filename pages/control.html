@@ -1,0 +1,22 @@
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#237f82";
+        form.Refresh();
+
+        var memo1 = new HtmlMemo(form);
+        memo1.name = "memo1";
+        memo1.align = "center";
+        memo1.width = 300;
+        memo1.text = "Control:"+
+                    "所有可视化控件的基类，它定义了所有控件的基础属性和通用方法，自定义控件时请从Control继承。\r\n"+
+                    "属性：\r\n"+
+                    "   (1) align，非常重要的布局属性，它决定了控件在容器中的位置，它的枚举值有：\r\n"+
+                    "       none（自定义位置）,left（居左）,top（居顶部）,right（居右）,bottom（居底部）,center（铺满）";
+        memo1.Refresh();
+    }
+</script>
