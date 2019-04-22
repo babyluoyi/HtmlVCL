@@ -1,0 +1,38 @@
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#eee";
+        form.Refresh();
+
+        var btnAddRow = new HtmlButton(form);
+        btnAddRow.text = "info messagebox";
+        btnAddRow.width = 150;
+        btnAddRow.height = 30;
+        btnAddRow.left = 10;
+        btnAddRow.top = 10;
+        btnAddRow.onclick = function(){
+            HtmlMessageBox.info(form,"提示","hello,HtmlVCL.",function(){
+                alert("you click ok");
+            });
+        }
+        btnAddRow.Refresh();
+
+        var btnQs = new HtmlButton(form);
+        btnQs.text = "Question messagebox";
+        btnQs.width = 150;
+        btnQs.height = 30;
+        btnQs.left = 10;
+        btnQs.top = 50;
+        btnQs.onclick = function(){
+            HtmlMessageBox.question(form,"提示","Do you like HtmlVCL?",function(res){
+                alert(res);
+            });
+        }
+        btnQs.Refresh();
+        
+    }
+</script>
