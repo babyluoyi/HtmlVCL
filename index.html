@@ -145,12 +145,14 @@
             navBar.color = "#393D49";
             navBar.items = [{"title":"search","items":[{"id":"1","caption":"Baidu","img":"img/p.png"},{"id":"2","caption":"Bing","img":"img/a.png"}]},
                             {"title":"components","items":[
-                                {"id":"3","caption":"Control"},{"id":"4","caption":"HtmlForm"},
-                                {"id":"12","caption":"Table","img":"img/d.png"},{"id":"13","caption":"Dialog","img":"img/e.png"},{"id":"14","caption":"TabControl"},
-                                    {"id":"15","caption":"messagebox","img":"img/f.png"},{"id":"16","caption":"NIS","img":"img/h.png"},{"id":"17","caption":"院感"},
-                                    {"id":"18","caption":"医疗质控"},{"id":"19","caption":"危急值管理"},{"id":"20","caption":"物资管理"},
-                                    {"id":"21","caption":"HRP","img":"img/g.png"},{"id":"23","caption":"人事系统","img":"img/p.png"},{"id":"24","caption":"成本管控"}]},
-                            {"title":"飞机","items":[{"id":"31","caption":"波音"},{"id":"32","caption":"空客"},{"id":"32","caption":"空客"},{"id":"32","caption":"空客"}]}
+                                {"id":"3","caption":"Control"},{"id":"4","caption":"HtmlForm"},{"id":"5","caption":"HtmlPanel"},
+                                {"id":"6","caption":"HtmlNavBar"},{"id":"7","caption":"HtmlFrame"},
+                                {"id":"12","caption":"HtmlTable","img":"img/d.png"},{"id":"13","caption":"HtmlDialog","img":"img/e.png"},{"id":"14","caption":"HtmlTabControl"},
+                                    {"id":"15","caption":"messagebox","img":"img/f.png"},{"id":"16","caption":"HtmlPopupMenu","img":"img/h.png"},{"id":"17","caption":"HtmlDropMenu"},
+                                    {"id":"24","caption":"其他控件"}]},
+                            {"title":"other","items":[{"id":"31","caption":"HtmlButton"},{"id":"32","caption":"HtmlLinkButton"},{"id":"33","caption":"HtmlEdit"},{"id":"34","caption":"HtmlMemo"},
+                                {"id":"35","caption":"HtmlLabel"},{"id":"36","caption":"HtmlImage"},{"id":"37","caption":"HtmlCheckBox"},
+                                {"id":"38","caption":"HtmlRadio"},{"id":"39","caption":"HtmlCombobox"},{"id":"40","caption":"HtmlGroupBox"}]}
                             ];
             navBar.onGroupItemClick = function(event){
                 //alert(event.control.id+":"+event.control.text); 
@@ -166,6 +168,12 @@
                         url = "pages/control.html"; break;
                     case "4":
                         url = "pages/form.html"; break;
+                    case "5":
+                        url = "pages/panel.html"; break;
+                    case "6":
+                        url = "pages/NavBar.html"; break;
+                    case "7":
+                        url = "pages/frame.html"; break;
                     case "12":
                         url = "pages/table.html";
                         break;
@@ -177,6 +185,12 @@
                         break;
                     case "15":
                         url = "pages/messagebox.html";
+                        break;
+                    case "16":
+                        url = "pages/popupMenu.html";
+                        break;
+                    case "17":
+                        url = "pages/dropMenu.html";
                         break;
                     default:
                         url = "pages/method-EN.html";
