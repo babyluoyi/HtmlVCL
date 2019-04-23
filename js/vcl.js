@@ -846,6 +846,7 @@ function HtmlPopupMenu(parentElement) {
     var _this = new Control(parentElement, "div", "HtmlPopupMenu");
     parentElement.controls.push(_this);
     parentElement.controlCount = parentElement.controls.length;
+    _this.setVisible(false);
     _this.create();
     _this.onclick = function(){};
     _this.Refresh = function () {
