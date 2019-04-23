@@ -1,0 +1,36 @@
+﻿<meta charset="utf-8"> 
+<link rel="stylesheet" href="css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#eee";
+        form.Refresh();
+
+        var navBar = new HtmlNavBar(form);
+        navBar.align = "left";
+        navBar.alignment = "center";
+        navBar.width = 200;
+        navBar.color = "#393D49";
+        navBar.items = [{"title":"countries","items":[{"id":"1","caption":"China"},{"id":"2","caption":"USA"}]},
+                        {"title":"city","items":[{"id":"11","caption":"HangZhou"},{"id":"22","caption":"BeiJing"}]},
+                        {"title":"系统","items":[{"id":"12","caption":"HIS"},{"id":"13","caption":"LIS"},{"id":"14","caption":"PACS"}]},
+                        {"title":"飞机","items":[{"id":"31","caption":"波音"},{"id":"32","caption":"空客"}]}
+                        ];
+        navBar.Refresh();
+
+        var memo1 = new HtmlMemo(form);
+        memo1.name = "memo1";
+        memo1.align = "center";
+        memo1.width = 300;
+        memo1.text = "HtmlNavBar的重要属性:\r\n"+
+                    "(1) items,定义了导航项 \r\n"+
+                    "(2) onGroupItemClick事件,导航栏点击事件，事件包含了event参数，它的事件类是ControlEvent\r\n"+
+                    "    ControlEvent包含属性如下：\r\n"+
+                    "    control 产生事件的控件 \r\n"+
+                    "    index 索引值，用于寄存";
+        memo1.Refresh();
+        
+    }
+</script>
