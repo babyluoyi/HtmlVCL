@@ -1,0 +1,51 @@
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#237f82";
+        form.Refresh();
+
+        var topPanel = new HtmlPanel(form);
+		topPanel.align = "top";
+		topPanel.width = 100;
+		topPanel.height = 100;
+		topPanel.color = "green";
+		topPanel.text = "top panel";
+		topPanel.Refresh();
+
+		var leftPanel = new HtmlPanel(form);
+		leftPanel.align = "left";
+		leftPanel.width = 100;
+		leftPanel.height = 100;
+		leftPanel.color = "red";
+		leftPanel.text = "left panel";
+		leftPanel.Refresh();
+
+		var rightPanel = new HtmlPanel(form);
+		rightPanel.align = "right";
+		rightPanel.width = 100;
+		rightPanel.height = 100;
+		rightPanel.color = "yellow";
+		rightPanel.text = "right panel";
+		rightPanel.Refresh();
+
+		var bottomPanel = new HtmlPanel(form);
+		bottomPanel.align = "bottom";
+		bottomPanel.width = 100;
+		bottomPanel.height = 100;
+		bottomPanel.color = "blue";
+		bottomPanel.text = "bottom panel";
+		bottomPanel.Refresh();
+
+		var centerPanel = new HtmlPanel(form);
+		centerPanel.align = "center";
+		centerPanel.width = 100;
+		centerPanel.height = 100;
+		centerPanel.color = "#ff88ff";
+		centerPanel.text = "center panel";
+		centerPanel.Refresh();
+    }
+</script>
