@@ -11,12 +11,36 @@
         var memo1 = new HtmlMemo(form);
         memo1.name = "memo1";
         memo1.align = "center";
+        memo1.fontSize = 14;
         memo1.width = 300;
         memo1.text = "Control:"+
                     "所有可视化控件的基类，它定义了所有控件的基础属性和通用方法，自定义控件时请从Control继承。\r\n"+
                     "属性：\r\n"+
-                    "   (1) align，非常重要的布局属性，它决定了控件在容器中的位置，它的枚举值有：\r\n"+
-                    "       none（自定义位置）,left（居左）,top（居顶部）,right（居右）,bottom（居底部）,center（铺满）";
+                    "   (1) align，非常重要的布局属性，它决定了控件自身在所属容器中的位置，它的枚举值有：\r\n"+
+                    "       none（自定义位置）,left（居左）,top（居顶部）,right（居右）,bottom（居底部）,center（铺满）\r\n"+
+                    "       对应方法有：setAlign，getAlign\r\n"+
+                    "   (2) alignment,文本内容位置，它的枚举值有：left,right,center\r\n"+
+                    "   (3) name,控件名称\r\n"+
+                    "   (4) color,控件背景色，值可以如: #fff,rgb(10,10,10),red\r\n"+
+                    "       对应方法有：setColor，getColor\r\n"+
+                    "   (5) css,可以设置控件的CSS样式\r\n"+
+                    "       对应的方法有：setCss,getCss \r\n"+
+                    "   (6) className,控件的样式类，默认情况下是控件类名称\r\n"+
+                    "   (7) fontName(字体),fontSize(字号),fontColor(字体颜色)\r\n"+
+                    "   (8) html,设置控件的内容\r\n"+
+                    "       对应的方法有：setHtml,getHtml\r\n"+
+                    "   (9) parent,父级控件\r\n"+
+                    "   (10) self,控件对应的Html元素，比如HtmlPanel，它的self是Div元素\r\n"+
+                    "   (11) popupMenu,控件右键菜单，代码如：combox.setPopupMenu(popupMenu1)\r\n"+
+                    "   (12) 位置属性：left,top,right,bottom\r\n"+
+                    "   (13) width,height，控件长宽，如果align属性伟left或right，则width有效height无效，align为top或bottom，则width无效height有效\r\n"+
+                    "        align为center，则width和height都无效;align为none时，left、top、width、height都有效。\r\n"+
+                    "   (14) controls，包含的所有子控件。\r\n"+
+                    "   (15) controlCount,包含的子控件数量 \r\n"+
+                    "   (16) text,文本\r\n"+
+                    "   (17) visible,控件是否可视，true和false\r\n"+
+                    "        对应的方法有：setVisible\r\n"+
+                    "   (18) update，控件更新，提供给继承者控件的Refresh方法调用，它将调用create，resize,setControlPos方法来对控件初始化。";
         memo1.Refresh();
     }
 </script>
