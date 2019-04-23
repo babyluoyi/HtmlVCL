@@ -1,0 +1,32 @@
+﻿<meta charset="utf-8"> 
+<link rel="stylesheet" href="css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#eee";
+        form.Refresh();
+
+        var memo1 = new HtmlMemo(form);
+        memo1.name = "memo1";
+        memo1.align = "center";
+        memo1.width = 300;
+        memo1.text = "HtmlPopupMenu 右键快捷菜单:\r\n"+
+                    "(1) items,定义了菜单项 \r\n"+
+                    "(2) onclick,导航栏点击事件，事件包含了obj、evt参数\r\n"+
+                    "    obj是被右击的控件：\r\n"+
+                    "    evt.id 菜单id \r\n"+
+                    "    evt.text 菜单名称";
+        memo1.Refresh();
+
+        var popupMenu1 = new HtmlPopupMenu(form);
+		popupMenu1.items = [{id:1,text:"复制"},{id:2,text:"张贴"},{id:-1,text:"-"},{id:3,text:"剪切"}];
+		popupMenu1.onclick = function(obj,evt){
+			alert(obj.text);
+			alert(evt.id);
+			alert(evt.text);
+        }
+        memo1.setPopupMenu(popupMenu1);
+    }
+</script>
