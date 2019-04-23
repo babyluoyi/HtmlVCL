@@ -1,0 +1,27 @@
+﻿<meta charset="utf-8"> 
+<link rel="stylesheet" href="css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#eee";
+        form.Refresh();
+
+        var popupMenu2 = new HtmlPopupMenu(form);
+        popupMenu2.items = [{id:1,text:"白血病"},{id:2,text:"肺炎"},{id:-1,text:"-"},{id:3,text:"流感"}];
+        popupMenu2.onclick = function(obj,evt){
+            alert(obj.text);
+            alert(evt.id);
+            alert(evt.text);
+        }
+        var top_center_DropMenu = new HtmlDropMenu(form);
+        top_center_DropMenu.text = "ICD-10疾病";
+        top_center_DropMenu.top = 30;
+        top_center_DropMenu.left = 10;
+        top_center_DropMenu.height = 20;
+        top_center_DropMenu.fontColor = "red";
+        top_center_DropMenu.setDropMenu(popupMenu2);
+        top_center_DropMenu.Refresh();
+    }
+</script>
