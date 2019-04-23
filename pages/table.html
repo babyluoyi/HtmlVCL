@@ -65,7 +65,21 @@
             alert(JSON.stringify(evt.data));
         }
         table.Refresh();
-        
+        var memo1 = new HtmlMemo(form);
+        memo1.name = "memo1";
+        memo1.align = "right";
+        memo1.width = 300;
+        memo1.text = "HtmlTable的重要属性:\r\n"+
+                    "(1) columns,定义表格的数据列 \r\n"+
+                    "(2) data,表格显示的数据 \r\n"+
+                    "(3) rowComputeStyle,行计算样式，根据字段值的计算，改变对应整行的显示样式，如：\r\n"+
+                    "    {\"fieldName\":\"age\",\"compare\":\">\",\"val\":\"18\",\"style\":\"color:blue;\"} \r\n"+
+                    "    表示当 'age' 的值大于18则行样式的字体颜色为blue。\r\n"+
+                    "(4) cellComputeStyle,单元格计算样式，根据字段值的计算，改变单元格的样式，它的定义与rowComputeStyle一样，不同的是可以为html内容。如：\r\n"+
+                    "    {\"fieldName\":\"weather\",\"compare\":\"=\",\"val\":\"sunshine\",\"style\":\"<img style='width:18px;height:18px;' src='../img/e.png' />\"}\r\n"+
+                    "    表示weather的值为‘sunshine’时，单元格的值将被Img元素替换。\r\n"+
+                    "(5) buttons，定义操作按钮，onButtonClick事件是他们的点击响应。";
+        memo1.Refresh();
     }
 </script>
 <body>
