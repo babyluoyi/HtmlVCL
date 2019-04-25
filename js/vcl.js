@@ -444,6 +444,7 @@ function ControlEvent(c){
         control:c,
         index : -1
     }
+    return _self;
 }
 
 /*基础界面控件*/
