@@ -1471,3 +1471,35 @@ var HtmlMessageBox = {
         this.qs_dialog.show();
     }
 }
+
+function Thread(executeMedthod,delay){
+    var i=0;
+    var stoped = false;
+    var suspended = false;
+    var sleeping = false;
+    var _self = {
+        start:function(){
+            stoped = false;
+            _self._run();
+        },
+        stop:function(){
+            stoped = true;
+        },
+        suspend:function(){
+            suspended = true;
+        },
+        resume:function(){
+            suspended = false;
+        },
+        _run:function(){
+            if (stoped) return;
+            postMessage(i);
+            if (!suspended)
+                    executeMedthod();
+            setTimeout(function(){
+                _self._run();
+            },delay);
+        }
+    }
+    return _self;
+}
