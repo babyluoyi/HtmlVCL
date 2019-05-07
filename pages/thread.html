@@ -1,0 +1,95 @@
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="../css/vcl.css">
+<script type="text/javascript" src="../js/vcl.js"></script>
+<script type="text/javascript">
+    function main() {
+        var form = new HtmlForm(null);
+        form.align = "center";
+        form.color = "#237f82";
+        form.Refresh();
+
+        var topPanel = new HtmlPanel(form);
+		topPanel.align = "top";
+		topPanel.width = 100;
+		topPanel.height = 60;
+		topPanel.color = "green";
+		topPanel.Refresh();
+        var button1 = new HtmlButton(topPanel);
+        button1.text = "new thread";
+        button1.width = 150;
+        button1.height = 30;
+        button1.left = 10;
+        button1.top = 10;
+        button1.onclick = function(){
+            var panel = new HtmlPanel(form);
+            panel.align = "top";
+            panel.width = 100;
+            panel.height = 60;
+            panel.color = "green";
+            panel.Refresh();
+
+            var label = new HtmlLabel(panel);
+            label.alignment = "left";
+            label.left = 20;
+            label.top = 10;
+            label.text = "0";
+            label.width = "auto";
+            label.fontColor = "white";
+            label.fontSize = 14;
+            label.Refresh();
+
+            var start = new HtmlButton(panel);
+            start.text = "start";
+            start.width = 50;
+            start.height = 30;
+            start.left = 60;
+            start.top = 10;
+            start.onclick = function(){
+                thread.start();
+            }
+            start.Refresh();
+
+            var stop = new HtmlButton(panel);
+            stop.text = "stop";
+            stop.width = 50;
+            stop.height = 30;
+            stop.left = 120;
+            stop.top = 10;
+            stop.onclick = function(){
+                thread.stop();
+            }
+            stop.Refresh();
+
+            var suspend = new HtmlButton(panel);
+            suspend.text = "suspend";
+            suspend.width = 70;
+            suspend.height = 30;
+            suspend.left = 180;
+            suspend.top = 10;
+            suspend.onclick = function(){
+                thread.suspend();
+            }
+            suspend.Refresh();
+
+            var resume = new HtmlButton(panel);
+            resume.text = "resume";
+            resume.width = 70;
+            resume.height = 30;
+            resume.left = 260;
+            resume.top = 10;
+            resume.onclick = function(){
+                thread.resume();
+            }
+            resume.Refresh();
+
+            var i=1;
+            var thread = new Thread(function(){
+                label.setText(i);
+                i++;
+            },200);
+        }
+        button1.Refresh();
+
+
+    }
+</script>
