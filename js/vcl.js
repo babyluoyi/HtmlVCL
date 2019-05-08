@@ -1,5 +1,6 @@
 ﻿/*
- * name：Application
+ * name：Html visual component library
+ * version:1.0
  * descript：.
  * Author : Roy(luoyi,罗毅,15925664181,173783000@qq.com)
 */
